@@ -10,14 +10,46 @@
   </head>
   <body>
     <main id="main_content">
+      <h1>Bienvenido!</h1>
+      <h4>Instrucciones</h4>
+      <ol>
+        <li>Seleccionar que tipo de grid (cuadricula) queremos</li>
+        <li>Dibujar como si fuera paint (hacer click y mover el mouse)</li>
+      </ol>
+      <ul>
+        <li>Pencil = Lapiz</li>
+        <li>Eraser = Borrador</li>
+        <li>Randomizer = Colores Aleatorios!</li>
+        <li>Gap = lineas de cuadricula</li>
+        <li>Para cambiar color, hacer click en el boton que tiene un color encima</li>
+      </ul>
+      <h4>Aviso</h4>
+      <p>Esta app no esta terminanda, falta diseñar la interfaz de usuario. En si solamente esta disponible para hacer pruebas (tontear) ;)</p>
       <div class="frame">
-        <div class="frame_whiteboard"></div>
+        <div class="frame_whiteboard gap"></div>
         <div class="frame_buttons"></div>
       </div>
-      <button class="btn" data-grid-size="8">8x8</button>
-      <button class="btn" data-grid-size="16">16x16</button>
-      <button class="btn" data-grid-size="32">32x32</button>
-      <input type="color" name="color" id="color" />
+      <div class="button_container">
+        <!-- Grid -->
+        <h3>Grid options</h3>
+        <div class="button_wrapper">
+          <button class="btn btn_grid" data-grid-size="8">8x8</button>
+          <button class="btn btn_grid" data-grid-size="16">16x16</button>
+          <button class="btn btn_grid" data-grid-size="32">32x32</button>
+          <button class="btn btn_gap">gap</button>
+        </div>
+        
+        <!-- Tools -->
+        <h3>Tool options</h3>
+        <div class="button_wrapper">
+          <button class="btn btn_tool" data-tool="pencil">pencil</button>
+          <button class="btn btn_tool" data-tool="eraser">eraser</button>
+          <button class="btn btn_tool" data-tool="randomizer">
+            randomizer
+          </button>
+          <input type="color" name="color" id="color" />
+        </div>
+      </div>
     </main>
   </body>
 </html>

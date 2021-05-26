@@ -29,11 +29,15 @@ Global
 =======================
 */
 body {
-  font-size: 16px;
+  font-size: 14px;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+li {
+  padding: .2em;
+  margin-left: 1em;
 }
 
 /* 
@@ -63,6 +67,8 @@ Layout
   height: 300px;
   background-color: gray;
   display: grid;
+}
+.gap {
   grid-gap: 1px;
 }
 .whiteboard_square {
@@ -75,4 +81,18 @@ Layout
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+.whiteboard_square:hover {
+  opacity: .7;
+}
+
+.button_container {
+  background-color: burlywood;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.button_wrapper {
+  text-align: center;
 }
