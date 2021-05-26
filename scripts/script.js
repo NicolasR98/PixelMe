@@ -5,8 +5,17 @@ Selectors
 */
 
 const whiteboard = document.querySelector(".frame_whiteboard");
-const buttons = document.querySelectorAll(".btn");
+const gridButtons = document.querySelectorAll(".btn_grid");
+const gapButton = document.querySelector(".btn_gap");
+const toolButtons = document.querySelectorAll(".btn_tool");
 const currentColor = document.querySelector("#color");
+
+/*
+==============
+Global Variables
+==============
+*/
+let currentTool = "pencil";
 
 /*
 ==============
@@ -14,6 +23,7 @@ Functions
 ==============
 */
 
+//============== Grid Functions ==============
 const getGridSize = (e) => (gridSize = e.target.getAttribute("data-grid-size"));
 const makeGrid = (e) => {
   //Clear whiteboard
@@ -32,18 +42,44 @@ const makeGrid = (e) => {
   }
 };
 
-buttons.forEach((btn) => {
-  btn.addEventListener("click", makeGrid);
-});
+const toggleGap = () => whiteboard.classList.toggle("gap");
+
+//============== Tools Functions ==============
+const getRandomNum = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const getRandomHexCl = () => {
+  let hexColor = [];
+  let currentNum = 0;
+
+  for (let i = 0; i < 6; i++) {
+    currentNum = getRandomNum(0, 15).toString(16);
+    hexColor.push(currentNum);
+  }
+
+  return `#${hexColor.join("")}`;
+};
+
+const selectTool = (e) => (currentTool = e.target.getAttribute("data-tool"));
 
 const toolHandling = (e) => {
-  let target = e.target;
-  if (target.className === "whiteboard_square") {
-    target.style.background = currentColor.value;
+  let pixel = e.target;
+  if (pixel.className === "whiteboard_square") {
+    const TOOLS = {
+      pencil: () => (pixel.style.background = currentColor.value),
+      eraser: () => (pixel.style.background = "#fff"),
+      randomizer: () => (pixel.style.background = getRandomHexCl()),
+    };
+    TOOLS[currentTool]();
   }
 };
-const draw = (e) => {
+
+const renderDraw = (e) => {
   whiteboard.addEventListener("mousedown", (e) => {
+    //Invoke the function when click
+    toolHandling(e);
+    //Invoke the function when move the mouse
     whiteboard.addEventListener("mousemove", toolHandling);
   });
 };
@@ -54,8 +90,18 @@ Events
 ==============
 */
 
-whiteboard.addEventListener("mousedown", draw);
+gridButtons.forEach((btn) => {
+  btn.addEventListener("click", makeGrid);
+});
+
+gapButton.addEventListener("click", toggleGap);
+
+toolButtons.forEach((btn) => {
+  btn.addEventListener("click", selectTool);
+});
+
+whiteboard.addEventListener("mousedown", renderDraw);
+//When we stop clicking, it stops drawing
 window.addEventListener("mouseup", (e) => {
   whiteboard.removeEventListener("mousemove", toolHandling);
 });
-
