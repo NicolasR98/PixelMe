@@ -10,6 +10,18 @@ Fonts
 Variables
 =======================
 */
+:root {
+  /* Colors */
+  --white-1: #FFFFFF;
+  --dark-1: #0A0A0A;
+  --dark-2: #424242;
+  --gray-1: #C7C7C7;
+  --blue-1: #5757FF;
+  --purple-1: #9E00FF;
+
+  /* Borders */
+  --border: 1px solid var(--dark-1);
+}
 
 /* 
 =======================
