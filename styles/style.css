@@ -3,6 +3,7 @@
 Fonts
 =======================
 */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* 
 =======================
@@ -29,15 +30,12 @@ Global
 =======================
 */
 body {
-  font-size: 14px;
+  font-size: 16px;
+  font-family: 'Press Start 2P', monospace;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-li {
-  padding: .2em;
-  margin-left: 1em;
 }
 
 /* 
