@@ -6,17 +6,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/style.css" />
     <script src="./scripts/script.js" defer></script>
-    <title>Etch a Sketch</title>
+    <title>PixelMe!</title>
   </head>
   <body>
-    <main id="main_content">
-      
-      <div class="frame">
-        <div class="frame_whiteboard gap"></div>
-        <div class="frame_buttons"></div>
+    <!-- Header -->
+    <header class="header">
+      <div class="title_container">
+        <h1 class="title_header">PixelMe!</h1>
       </div>
-      <div class="button_container">
-        <!-- Grid -->
+    </header>
+
+    <!-- Nav links -->
+    <nav class="nav nav_links">
+      <div class="nav_items links">
+        <button class="nav_item btn_modal" data-nav-item="help">Help</button>
+        <button class="nav_item btn_modal" data-nav-item="social">Social</button>
+        <button class="nav_item btn_modal" data-nav-item="about">About</button>
+      </div>
+    </nav>
+
+    <!-- Nav Tools -->
+    <div class="nav nav_tools">
+      <!-- Tools -->
+      <div class="nav_items tools">
+        <!-- Pencil -->
+        <button class="nav_item btn_tool" data-tool="pencil">
+          <img src="./images/pencil.svg" alt="pencil" srcset="" data-tool="pencil"/>
+        </button>
+        <!-- Eraser -->
+        <button class="nav_item btn_tool" data-tool="eraser">
+          <img src="./images/eraser.png" alt="eraser" srcset="" data-tool="eraser"/>
+        </button>
+        <!-- Palette -->
+        <button class="nav_item btn_tool" data-tool="palette">
+          <img src="./images/palette.png" alt="palette" srcset="" data-tool="palette"/>
+          <input type="color" name="color" class="palette" data-tool="palette"/>
+        </button>
+        <button class="nav_item btn_tool btn_frame" data-tool="frame">
+          <img src="./images/frame.svg" alt="frame" srcset="" data-tool="frame"/>
+          <img
+            class="chevron_submenu"
+            src="./images/chevron.svg"
+            alt="chevron"
+            srcset=""
+            data-tool="frame"
+          />
+        </button>
+      </div>
+
+      <!-- Subtitle -->
+      <div class="subtitle_wrapper">
+        <h3 class="subtitle">
+          <span class="highlight">UI Tools</span> - PixelMe! V1.0
+        </h3>
+      </div>
+
+      <!-- Submenu (add '.active' to display it)-->
+      <div class="submenu submenu_frame">
+        <div class="submenu_title_container">
+          <h3 class="submenu_title">Frame Sizes</h3>
+        </div>
+        <button class="btn_grid" data-grid-size="8">Grid 8x8</button>
+        <button class="btn_grid" data-grid-size="16">Grid 16x16</button>
+        <button class="btn_grid" data-grid-size="32">Grid 32x32</button>
+        <button class="btn_grid" data-grid-size="64">Grid 64x64</button>
+      </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal">
+      <!-- Help content -->
+      <article class="modal_box help">
+        <!-- Header -->
+        <header class="header">
+          <div class="title_container">
+            <h3 class="title_header">Help</h3>
+          </div>
+          <button class="close">
+            <img src="./images/cross.svg" alt="close" srcset="" />
+          </button>
+        </header>
+
+        <!-- Content -->
+        <div class="box_content help">
+          <!-- Pencil -->
+          <div class="help_item">
+            <img src="./images/pencil_dark.svg" alt="pencil" srcset="" />
+            <div class="item_content">
+              <h3 class="content_title">Pencil</h3>
+              <p class="content_text">While it’s selected, you can draw.</p>
+            </div>
+          </div>
+          <!-- Eraser -->
+          <div class="help_item">
+            <img src="./images/eraser.png" alt="eraser" srcset="" />
+            <div class="item_content">
+              <h3 class="content_title">Eraser</h3>
+              <p class="content_text">While it’s selected, you can erase.</p>
+            </div>
+          </div>
+          <!-- Palette -->
+          <div class="help_item">
+            <img src="./images/palette.png" alt="palette" srcset="" />
+            <div class="item_content">
+              <h3 class="content_title">Palette</h3>
+              <p class="content_text">Opens a color palette.</p>
+            </div>
+          </div>
+          <div class="help_item">
+            <img src="./images/frame_dark.svg" alt="frame" srcset="" />
+            <div class="item_content">
+              <h3 class="content_title">Frame</h3>
+              <p class="content_text">
+                Create a new frame. Be careful! doing it, ereases everything.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Social content -->
+      <article class="modal_box social">
+        <header class="header">
+          <div class="title_container">
+            <h3 class="title_header">Social</h3>
+          </div>
+          <button class="close">
+            <img src="./images/cross.svg" alt="close" srcset="" />
+          </button>
+        </header>
+
+        <div class="box_content social">
+          <div class="social_wrapper">
+            <a
+              href="https://www.linkedin.com/in/diegonicolasrios/"
+              class="social_button linkedin"
+              target="_blank"
+            >
+              <img src="./images/linkedin.svg" alt="linkedin" srcset="" />
+            </a>
+            <a
+              href="https://github.com/NicolasR98"
+              class="social_button"
+              target="_blank"
+            >
+              <img src="./images/github.svg" alt="github" srcset="" />
+            </a>
+            <a
+              href="https://codepen.io/nicolasr98"
+              class="social_button codepen"
+              target="_blank"
+            >
+              <img src="./images/codepen.svg" alt="codepen" srcset="" />
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- About content -->
+      <article class="modal_box about">
+        <header class="header">
+          <div class="title_container">
+            <h3 class="title_header">About</h3>
+          </div>
+          <button class="close">
+            <img src="./images/cross.svg" alt="close" srcset="" />
+          </button>
+        </header>
+
+        <div class="box_content about">
+          <div class="about_wrapper">
+            <h2 class="about_title">PixelMe!</h2>
+            <p class="about_p">PixelMe! is an app for creating pixel art!.</p>
+            <p class="about_p">This project is made for The Odin Project.</p>
+            <p class="about_p">
+              So start making pixel art and I hope you enjoy it.
+            </p>
+
+            <h3 class="about_subtitle">Designer and Programmer</h3>
+            <p class="about_author">Nicolas Rios</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <main id="main_content">
+      <div class="frame gap">
+
+      </div>
+      <!-- <div class="button_container">
         <h3>Grid options</h3>
         <div class="button_wrapper">
           <button class="btn btn_grid" data-grid-size="8">8x8</button>
@@ -24,8 +202,6 @@
           <button class="btn btn_grid" data-grid-size="32">32x32</button>
           <button class="btn btn_gap">gap</button>
         </div>
-        
-        <!-- Tools -->
         <h3>Tool options</h3>
         <div class="button_wrapper">
           <button class="btn btn_tool" data-tool="pencil">pencil</button>
@@ -33,9 +209,8 @@
           <button class="btn btn_tool" data-tool="randomizer">
             randomizer
           </button>
-          <input type="color" name="color" id="color" />
         </div>
-      </div>
+      </div> -->
     </main>
   </body>
 </html>
