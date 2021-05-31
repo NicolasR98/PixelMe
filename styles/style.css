@@ -4,7 +4,6 @@ Fonts
 =======================
 */
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
 /* 
 =======================
 Variables
@@ -22,7 +21,6 @@ Variables
   /* Borders */
   --border: 1px solid var(--dark-1);
 }
-
 /* 
 =======================
 CSS Reset
@@ -54,24 +52,22 @@ Global
 body {
   font-size: 16px;
   font-family: "Press Start 2P", monospace;
-  height: 100vh;
+  max-height: 100vh;
   position: relative;
   background-color: var(--blue-1);
 }
 h3 {
   font-size: 1rem;
 }
-
 /* 
 =======================
 Layout
 =======================
 */
-/* Header */
+/* ========== Header ========== */
 .header {
   background-color: var(--gray-1);
   color: var(--white-1);
-  text-align: center;
   height: 30px;
   width: 100%;
   display: flex;
@@ -91,15 +87,13 @@ Layout
   font-size: 1rem;
 }
 
-/* Navbar */
+/* ========== Navbar ========== */
 .nav {
-  width: 100%;
-  height: 40px;
+  height: 35px;
   background-color: var(--white-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: var(--border);
 }
 .nav_items {
   width: 100%;
@@ -129,9 +123,6 @@ Layout
 .btn_tool.active{
   background-color: var(--gray-1);
 }
-.chevron_submenu.active {
-  transform: rotate(180deg);
-}
 .palette {
   height: 100%;
   width: 100%;
@@ -141,6 +132,9 @@ Layout
   position: absolute;
   cursor: pointer;
 }
+.chevron_submenu.active {
+  transform: rotate(180deg);
+}
 .chevron_submenu {
   position: relative;
   bottom: 13px;
@@ -149,7 +143,6 @@ Layout
 
 /* Subtitle */
 .subtitle_wrapper {
-  width: 100%;
   height: 35px;
   display: flex;
   align-items: center;
@@ -163,7 +156,7 @@ Layout
   color: var(--purple-1);
 }
 
-/* Submenu */
+/* ========== Submenu ========== */
 .submenu {
   position: absolute;
   top: 90px;
@@ -186,9 +179,6 @@ Layout
   border-bottom: 2px solid var(--dark-1);
   padding: 0 0 0.25em 0.85em;
 }
-.submenu_title {
-  font-size: 1rem;
-}
 .btn_grid {
   display: flex;
   align-items: center;
@@ -204,8 +194,8 @@ Layout
   color: var(--white-1);
 }
 
-/* Main content */
-#main_content {
+/* ========== Main ========== */
+.main {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -235,26 +225,11 @@ Layout
   -o-user-select: none;
   user-select: none;
 }
-.whiteboard_square:hover {
+.frame_square:hover {
   opacity: 0.7;
 }
 
-.button_container {
-  background-color: burlywood;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-.button_wrapper {
-  text-align: center;
-}
-
-/* 
-=======================
-Modals
-=======================
-*/
+/* ========== Modals ========== */
 .modal {
   position: absolute;
   top: 0;
@@ -277,12 +252,8 @@ Modals
 .modal_box.active {
   display: block;
 }
-.modal_box > .header {
-  height: 30px;
-}
 .close {
-  border: 1px solid var(--dark-2);
-  border-left: 2px solid var(--dark-2);
+  border: 2px solid var(--dark-2);
   width: 30px;
   height: 100%;
   position: absolute;
@@ -291,7 +262,9 @@ Modals
 .close > img {
   width: 20px;
 }
-
+.close:hover {
+  background-color: var(--dark-1);
+}
 .content_text {
   font-size: 0.6rem;
   color: var(--dark-2);
@@ -303,6 +276,7 @@ Modals
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  text-align: left;
   padding: 1em;
   outline: var(--border);
 }
@@ -322,8 +296,7 @@ Modals
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
-  width: 100%;
+  height: 200px;
 }
 .social_wrapper {
   width: 100%;

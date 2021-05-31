@@ -16,34 +16,61 @@
       </div>
     </header>
 
-    <!-- Nav links -->
+    <!-- Nav links Container -->
     <nav class="nav nav_links">
       <div class="nav_items links">
         <button class="nav_item btn_modal" data-nav-item="help">Help</button>
-        <button class="nav_item btn_modal" data-nav-item="social">Social</button>
+        <button class="nav_item btn_modal" data-nav-item="social">
+          Social
+        </button>
         <button class="nav_item btn_modal" data-nav-item="about">About</button>
       </div>
     </nav>
 
-    <!-- Nav Tools -->
+    <!-- Nav Tools Container -->
     <div class="nav nav_tools">
-      <!-- Tools -->
       <div class="nav_items tools">
         <!-- Pencil -->
         <button class="nav_item btn_tool" data-tool="pencil">
-          <img src="./images/pencil.svg" alt="pencil" srcset="" data-tool="pencil"/>
+          <img
+            src="./images/pencil.svg"
+            alt="pencil"
+            srcset=""
+            data-tool="pencil"
+          />
         </button>
         <!-- Eraser -->
         <button class="nav_item btn_tool" data-tool="eraser">
-          <img src="./images/eraser.png" alt="eraser" srcset="" data-tool="eraser"/>
+          <img
+            src="./images/eraser.png"
+            alt="eraser"
+            srcset=""
+            data-tool="eraser"
+          />
         </button>
         <!-- Palette -->
         <button class="nav_item btn_tool" data-tool="palette">
-          <img src="./images/palette.png" alt="palette" srcset="" data-tool="palette"/>
-          <input type="color" name="color" class="palette" data-tool="palette"/>
+          <img
+            src="./images/palette.png"
+            alt="palette"
+            srcset=""
+            data-tool="palette"
+          />
+          <input
+            type="color"
+            name="color"
+            class="palette"
+            data-tool="palette"
+          />
         </button>
+        <!-- Frame -->
         <button class="nav_item btn_tool btn_frame" data-tool="frame">
-          <img src="./images/frame.svg" alt="frame" srcset="" data-tool="frame"/>
+          <img
+            src="./images/frame.svg"
+            alt="frame"
+            srcset=""
+            data-tool="frame"
+          />
           <img
             class="chevron_submenu"
             src="./images/chevron.svg"
@@ -54,7 +81,7 @@
         </button>
       </div>
 
-      <!-- Subtitle -->
+      <!-- Subtitle Container-->
       <div class="subtitle_wrapper">
         <h3 class="subtitle">
           <span class="highlight">UI Tools</span> - PixelMe! V1.0
@@ -75,9 +102,9 @@
 
     <!-- Modals -->
     <div class="modal">
+      
       <!-- Help content -->
       <article class="modal_box help">
-        <!-- Header -->
         <header class="header">
           <div class="title_container">
             <h3 class="title_header">Help</h3>
@@ -87,7 +114,6 @@
           </button>
         </header>
 
-        <!-- Content -->
         <div class="box_content help">
           <!-- Pencil -->
           <div class="help_item">
@@ -113,6 +139,7 @@
               <p class="content_text">Opens a color palette.</p>
             </div>
           </div>
+          <!-- Frame -->
           <div class="help_item">
             <img src="./images/frame_dark.svg" alt="frame" srcset="" />
             <div class="item_content">
@@ -190,27 +217,8 @@
       </article>
     </div>
 
-    <main id="main_content">
-      <div class="frame gap">
-
-      </div>
-      <!-- <div class="button_container">
-        <h3>Grid options</h3>
-        <div class="button_wrapper">
-          <button class="btn btn_grid" data-grid-size="8">8x8</button>
-          <button class="btn btn_grid" data-grid-size="16">16x16</button>
-          <button class="btn btn_grid" data-grid-size="32">32x32</button>
-          <button class="btn btn_gap">gap</button>
-        </div>
-        <h3>Tool options</h3>
-        <div class="button_wrapper">
-          <button class="btn btn_tool" data-tool="pencil">pencil</button>
-          <button class="btn btn_tool" data-tool="eraser">eraser</button>
-          <button class="btn btn_tool" data-tool="randomizer">
-            randomizer
-          </button>
-        </div>
-      </div> -->
+    <main class="main">
+      <div class="frame gap"></div>
     </main>
   </body>
 </html>

@@ -4,17 +4,26 @@ Selectors
 ==============
 */
 
-const whiteboard = document.querySelector(".frame_whiteboard");
+const frameSubmenu = document.querySelector(".submenu");
+const frame = document.querySelector(".frame");
+
 const gridButtons = document.querySelectorAll(".btn_grid");
-const gapButton = document.querySelector(".btn_gap");
 const toolButtons = document.querySelectorAll(".btn_tool");
-const currentColor = document.querySelector("#color");
+
+const closeButtons = document.querySelectorAll(".close");
+const chevron = document.querySelector(".chevron_submenu");
+const modalButtons = document.querySelectorAll(".btn_modal");
+const modal = document.querySelector(".modal");
+const modalBox = document.querySelectorAll(".modal_box");
+
+const currentColor = document.querySelector(".palette");
 
 /*
 ==============
 Global Variables
 ==============
 */
+
 let currentTool = "pencil";
 
 /*
@@ -23,65 +32,127 @@ Functions
 ==============
 */
 
-//============== Grid Functions ==============
-const getGridSize = (e) => (gridSize = e.target.getAttribute("data-grid-size"));
-const makeGrid = (e) => {
-  //Clear whiteboard
-  whiteboard.innerHTML = "";
-
-  const gridSize = getGridSize(e);
-  const squareQty = gridSize * gridSize;
-
-  whiteboard.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
-  whiteboard.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
-  //Create the squares and append them to the whiteboard
-  for (let i = 0; i <= squareQty; i++) {
-    const square = document.createElement("div");
-    square.className = "whiteboard_square";
-    whiteboard.append(square);
-  }
+//============== Modal and Submenu Functions ==============
+const displayModal = (e) => {
+  let target = e.target.getAttribute("data-nav-item");
+  const NAV_MODALS = {
+    help: () => {
+      modal.classList.add("active");
+      modalBox[0].classList.add("active");
+    },
+    social: () => {
+      modal.classList.add("active");
+      modalBox[1].classList.add("active");
+    },
+    about: () => {
+      modal.classList.add("active");
+      modalBox[2].classList.add("active");
+    },
+  };
+  NAV_MODALS[target]();
 };
 
-const toggleGap = () => whiteboard.classList.toggle("gap");
+const closeWindow = () => {
+  modal.classList.remove("active");
+  modalBox.forEach((box) => box.classList.remove("active"));
+};
+
+const displaySubmenu = () => {
+  frameSubmenu.classList.toggle("active");
+};
 
 //============== Tools Functions ==============
-const getRandomNum = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+const handleBtnState = (tool) => {
+  // Remove all the .active of all tool buttons except the current tool.
+  toolButtons.forEach((btn) => {
+    let dataTool = btn.getAttribute("data-tool");
+    dataTool === currentTool ? "" : btn.classList.remove("active");
+  });
+  frameSubmenu.classList.remove("active");
+  chevron.classList.remove("active");
 
-const getRandomHexCl = () => {
-  let hexColor = [];
-  let currentNum = 0;
-
-  for (let i = 0; i < 6; i++) {
-    currentNum = getRandomNum(0, 15).toString(16);
-    hexColor.push(currentNum);
+  const TOOL_BUTTONS = {
+    pencil: () => toolButtons[0].classList.add("active"),
+    eraser: () => toolButtons[1].classList.toggle("active"),
+    frame: () => {
+      toolButtons[3].classList.toggle("active");
+      chevron.classList.toggle("active");
+      displaySubmenu();
+    },
+  };
+  if (tool) {
+    TOOL_BUTTONS[tool]();
   }
-
-  return `#${hexColor.join("")}`;
 };
 
-const selectTool = (e) => (currentTool = e.target.getAttribute("data-tool"));
+const selectTool = (e) => {
+  const TOOLS = {
+    pencil: () => {
+      currentTool = "pencil";
+      handleBtnState(currentTool);
+    },
+    eraser: () => {
+      currentTool = "eraser";
+      handleBtnState(currentTool);
+    },
+    frame: () => {
+      currentTool = "frame";
+      handleBtnState(currentTool);
+    },
+    palette: () => {
+      currentTool = "pencil";
+      handleBtnState(currentTool);
+    },
+  };
 
-const toolHandling = (e) => {
-  let pixel = e.target;
-  if (pixel.className === "whiteboard_square") {
+  if (e) {
+    let target = e.target.getAttribute("data-tool");
+    TOOLS[target]();
+  } else {
+    TOOLS.pencil();
+  }
+};
+
+const handleTool = (e) => {
+  if (e.target.className === "frame_square") {
     const TOOLS = {
-      pencil: () => (pixel.style.background = currentColor.value),
-      eraser: () => (pixel.style.background = "#fff"),
-      randomizer: () => (pixel.style.background = getRandomHexCl()),
+      pencil: () => (e.target.style.background = currentColor.value),
+      eraser: () => (e.target.style.background = "#FFF"),
     };
     TOOLS[currentTool]();
   }
 };
 
-const renderDraw = (e) => {
-  whiteboard.addEventListener("mousedown", (e) => {
-    //Invoke the function when click
-    toolHandling(e);
-    //Invoke the function when move the mouse
-    whiteboard.addEventListener("mousemove", toolHandling);
-  });
+//============== Grid Functions ==============
+const getGridSize = (e) => (gridSize = e.target.getAttribute("data-grid-size"));
+
+const makeGrid = (e) => {
+  //Clear whiteboard
+  frame.innerHTML = "";
+
+  let gridSize = Number();
+
+  // When we invoke this function without any params, this will create an 8x8 grid.
+  if (!e) {
+    gridSize = 8;
+  } else {
+    gridSize = getGridSize(e);
+  }
+  const squareQty = gridSize * gridSize;
+
+  frame.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+  frame.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+
+  //Create the squares and append them to the frame
+  for (let i = 0; i <= squareQty; i++) {
+    const square = document.createElement("div");
+    square.className = "frame_square";
+    frame.append(square);
+  }
+
+  //After create a grid, select the pencil
+  selectTool();
+  handleBtnState();
 };
 
 /*
@@ -89,19 +160,31 @@ const renderDraw = (e) => {
 Events
 ==============
 */
+modalButtons.forEach((btn) => {
+  btn.addEventListener("click", displayModal);
+});
+closeButtons.forEach((btn) => {
+  btn.addEventListener("click", closeWindow);
+});
 
 gridButtons.forEach((btn) => {
   btn.addEventListener("click", makeGrid);
 });
 
-gapButton.addEventListener("click", toggleGap);
-
 toolButtons.forEach((btn) => {
   btn.addEventListener("click", selectTool);
 });
 
-whiteboard.addEventListener("mousedown", renderDraw);
-//When we stop clicking, it stops drawing
-window.addEventListener("mouseup", (e) => {
-  whiteboard.removeEventListener("mousemove", toolHandling);
-});
+frame.addEventListener("mousedown", handleTool);
+
+//This enables click-dragging
+document.body.onmousedown = () => {
+  frame.addEventListener("mouseover", handleTool);
+};
+document.body.onmouseup = () => {
+  frame.removeEventListener("mouseover", handleTool);
+  handleBtnState();
+};
+
+//Create an initial grid 8x8
+makeGrid();
