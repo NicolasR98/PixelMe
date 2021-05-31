@@ -120,7 +120,7 @@ Layout
 .btn_tool {
   position: relative;
 }
-.btn_tool.active{
+.btn_tool.active {
   background-color: var(--gray-1);
 }
 .palette {
