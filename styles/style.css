@@ -358,7 +358,7 @@ Layout
 }
 
 /* ========== Media Queries ========== */
-@media  (min-width: 510px) and  (min-height: 650px){
+@media (min-width: 510px) and (min-height: 650px) {
   .frame {
     margin-top: 1em;
     width: 475px;
@@ -366,8 +366,7 @@ Layout
   }
 }
 
-@media  (min-width: 850px) and (min-height: 850px){
-  
+@media (min-width: 850px) and (min-height: 850px) {
   .nav_tools {
     flex-direction: row;
     justify-content: space-between;
@@ -384,5 +383,3 @@ Layout
     height: 700px;
   }
 }
-
-
