@@ -25,6 +25,6 @@ The prototype was made on Figma, PixelMe! design is based on the O.S. Windows 1.
 - Export images.
 - Undo tool.
 
-### 🔗 **Live preview** [here.](https://nicolasr98.github.io/etch-a-sketch/) ###
+### 🔗 **Live preview** [here.](https://nicolasr98.github.io/PixelMe/) ###
 
  
